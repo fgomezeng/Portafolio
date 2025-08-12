@@ -1,0 +1,52 @@
+.aside {
+  background-color: var(--primary-color);
+  position: sticky;
+  height: 100vh;
+  width: 304px;
+  top: 0;
+  overflow-y: auto;
+
+  .profile-picture {
+    display: flex;
+    justify-content: center;
+
+    img {
+      border-radius: 50%;
+      position: relative;
+      top: 28px;
+    }
+  }
+
+  .nav-menu {
+    .list {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      width: 275px;
+
+      li {
+        display: flex;
+        margin: 0;
+        border-radius: 8px;
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+          color: var(--text-color);
+          font-size: 16px;
+          font-family: sans-serif;
+          padding: 16px;
+          width: 100%;
+        }
+
+        &:hover {
+          background-color: #a6adbb15;
+        }
+      }
+    }
+  }
+
+  @media (width > 1024px) {
+    display: grid;
+  }
+}

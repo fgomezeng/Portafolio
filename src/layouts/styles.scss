@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --primary-color: #191e24;
+  --secondary-color: #1c2229;
+  --text-color: #a6adbb;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  color: white;
+
+  .main {
+    grid-column-start: span 4;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    .header {
+      background-color: green;
+      display: none;
+    }
+
+    .section {
+      background-color: var(--secondary-color);
+      overflow: auto;
+    }
+
+    .footer {
+      background-color: darkblue;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+
+    .aside {
+      display: none;
+    }
+
+    .main {
+      grid-column: 1fr;
+      
+      .header {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

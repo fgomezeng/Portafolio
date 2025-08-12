@@ -1,0 +1,58 @@
+---
+import "./styles.scss";
+import { Image } from "astro:assets";
+
+const ROUTES = [
+  {
+    url: "home",
+    title: "Home",
+  },
+  {
+    url: "projects",
+    title: "Projects",
+  },
+  {
+    url: "services",
+    title: "Services",
+  },
+  {
+    url: "store",
+    title: "Store",
+  },
+  {
+    url: "blog",
+    title: "Blog",
+  },
+  {
+    url: "cv",
+    title: "CV",
+  },
+  {
+    url: "contact",
+    title: "Contact",
+  },
+];
+---
+
+<aside class="aside">
+  <section class="profile-picture">
+    <Image
+      src="https://astrofy-template.netlify.app/profile.webp"
+      alt="profile"
+      width="136"
+      height="136"
+    />
+  </section>
+  <section class="nav-menu">
+    <ul class="list">
+      {
+        ROUTES.map(({ url, title }) => (
+          <li>
+            <a href={`/${url}`}>{title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section class="social">Social</section>
+</aside>
