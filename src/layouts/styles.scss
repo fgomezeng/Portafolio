@@ -9,7 +9,9 @@ body {
   --primary-color: #191e24;
   --secondary-color: #1c2229;
   --active-color: #15191e;
+  --hover-color: #a6adbb15;
   --text-color: #a6adbb;
+  --primary-font: sans-serif;
 }
 
 .container {
@@ -24,16 +26,19 @@ body {
   .container {
     grid-template-columns: repeat(1, 1fr);
 
-    .aside {
-      display: none;
-    }
-
     .main {
       grid-column: 1fr;
-      
+
       .header {
-        display: flex;
-        justify-content: center;
+        justify-content: space-between;
+
+        img {
+          display: flex;
+        }
+
+        a {
+          display: flex;
+        }
       }
     }
   }

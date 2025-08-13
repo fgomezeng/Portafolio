@@ -1,0 +1,48 @@
+.container-card {
+  max-width: 900px;
+  border-bottom: 3px solid var(--hover-color);
+  padding-bottom: 10px;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-color);
+
+    .content-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease-in-out;
+
+      img {
+        max-width: 208px;
+        border-radius: 8px;
+      }
+
+      .text-card {
+        flex-grow: 1;
+
+        .title {
+          font-family: var(--primary-font);
+          font-weight: 700;
+          font-size: 20px;
+          margin: 0;
+        }
+
+        .description {
+          font-family: var(--primary-font);
+          margin: 0;
+          padding: 4px 0;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
+    }
+  }
+}

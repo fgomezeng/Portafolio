@@ -1,7 +1,23 @@
 ---
+import { Image } from "astro:assets";
+
+//Styles
 import "./styles.scss";
+
+//Assets
+//Icons
+import iconHamburguer from "../../../assets/icons/hamburguer.svg";
 ---
 
 <header class="header">
-    <h3>Fernando Gómez ✨</h3>
+  <Image id="menu" src={iconHamburguer} alt="Hamburguer" width={15} />
+  <a href="/">Fernando Gómez ✨</a>
+  <p>language</p>
 </header>
+<script>
+  const menu = document.getElementById("menu")!;
+  menu.addEventListener("click", () => {
+    const sidebar = document.getElementById("sidebar");
+    sidebar?.classList.toggle("aside__open");
+  });
+</script>

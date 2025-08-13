@@ -1,4 +1,13 @@
 .section {
-    background-color: var(--secondary-color);
-    overflow: auto;
+  background-color: var(--secondary-color);
+  overflow: auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .section-title {
+    font-family: var(--primary-font);
+    align-self: flex-start;
   }
+}

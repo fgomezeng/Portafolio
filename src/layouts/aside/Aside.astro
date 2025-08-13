@@ -31,7 +31,7 @@ const ROUTES = [
   },
   {
     title: "Projects",
-    path: "/home",
+    path: "/projects",
   },
   {
     title: "Services",
@@ -57,7 +57,7 @@ const isActive = (path: string) => {
 };
 ---
 
-<aside class="aside">
+<aside class="aside" id="sidebar">
   <section class="profile-picture">
     <Image src={profilePicture} alt="profile" width="136" height="136" />
   </section>
@@ -83,3 +83,11 @@ const isActive = (path: string) => {
     }
   </section>
 </aside>
+<div class="aside-backdrop" id="aside-backdrop"></div>
+<script>
+  const backdrop = document.getElementById('aside-backdrop');
+  const sidebar = document.getElementById("sidebar");
+  backdrop?.addEventListener('click', () => {
+    sidebar?.classList.remove('aside__open');
+  });
+</script>
