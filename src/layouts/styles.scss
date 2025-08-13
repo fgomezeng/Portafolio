@@ -20,6 +20,12 @@ body {
   grid-template-rows: 1fr;
   min-height: 100vh;
   color: white;
+
+  .main {
+    grid-column-start: span 4;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
 }
 
 @media (max-width: 1024px) {

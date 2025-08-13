@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+
+//Styles
+import "./styles.scss";
+
+//Assets
+//Icons
+import iconHamburguer from "../../assets/icons/hamburguer.svg";
+---
+
+<header class="header">
+  <Image id="menu" src={iconHamburguer} alt="Hamburguer" width={15} />
+  <a href="/">Fernando Gómez ✨</a>
+  <p>language</p>
+</header>
+<script src="./utils/toggle-menu.util.ts"></script>

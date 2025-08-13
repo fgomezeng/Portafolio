@@ -84,10 +84,4 @@ const isActive = (path: string) => {
   </section>
 </aside>
 <div class="aside-backdrop" id="aside-backdrop"></div>
-<script>
-  const backdrop = document.getElementById('aside-backdrop');
-  const sidebar = document.getElementById("sidebar");
-  backdrop?.addEventListener('click', () => {
-    sidebar?.classList.remove('aside__open');
-  });
-</script>
+<script src="./utils/toggle-menu-remove.util.ts"></script>

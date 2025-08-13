@@ -1,7 +1,8 @@
 ---
 import "./styles.scss";
 import Aside from "./aside/Aside.astro";
-import Main from "./main/Main.astro";
+import Header from "./header/Header.astro";
+import Footer from "./footer/Footer.astro";
 ---
 
 <!doctype html>
@@ -14,9 +15,13 @@ import Main from "./main/Main.astro";
     <title>Fernando Gómez</title>
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <Aside />
-      <Main />
-    </div>
+      <div class="main">
+        <Header />
+        <slot />
+        <Footer />
+      </div>
+    </main>
   </body>
 </html>
