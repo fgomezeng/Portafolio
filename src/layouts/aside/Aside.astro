@@ -1,58 +1,85 @@
 ---
-import "./styles.scss";
 import { Image } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
+
+//Styles
+import "./styles.scss";
+
+//Assets
+//Icons
+import iconLinkedin from "../../assets/icons/linkedin.svg";
+import iconGithub from "../../assets/icons/github.svg";
+
+//Images
+import profilePicture from "../../assets/images/profilep.jpeg";
+
+const ICONS = [
+  {
+    name: iconLinkedin,
+    url: "https://www.linkedin.com/in/fernando-gomez980912",
+  },
+  {
+    name: iconGithub,
+    url: "https://github.com/fgomezeng",
+  },
+];
 
 const ROUTES = [
   {
-    url: "home",
     title: "Home",
+    path: "/",
   },
   {
-    url: "projects",
     title: "Projects",
+    path: "/home",
   },
   {
-    url: "services",
     title: "Services",
+    path: "/services",
   },
   {
-    url: "store",
-    title: "Store",
-  },
-  {
-    url: "blog",
-    title: "Blog",
-  },
-  {
-    url: "cv",
     title: "CV",
+    path: "/cv",
   },
   {
-    url: "contact",
     title: "Contact",
+    path: "mailto:fernando.gomez@utp.edu.co",
   },
 ];
+
+//Valida la ruta para saber cuál está activa 
+const currentPath = new URL(Astro.request.url).pathname;
+const isActive = (path: string) => {
+  if(path === "/"){
+    return currentPath === "/";
+  }
+  return currentPath === path || currentPath.startsWith(path + "/");
+};
 ---
 
 <aside class="aside">
   <section class="profile-picture">
-    <Image
-      src="https://astrofy-template.netlify.app/profile.webp"
-      alt="profile"
-      width="136"
-      height="136"
-    />
+    <Image src={profilePicture} alt="profile" width="136" height="136" />
   </section>
   <section class="nav-menu">
     <ul class="list">
       {
-        ROUTES.map(({ url, title }) => (
+        ROUTES.map(({ path, title }) => (
           <li>
-            <a href={`/${url}`}>{title}</a>
+            <a href={path} class={isActive(path) ? 'active' : ''}>{title}</a>
           </li>
+          <ClientRouter/>
         ))
       }
     </ul>
   </section>
-  <section class="social">Social</section>
+  <section class="social">
+    {
+      ICONS.map(({ name, url }) => (
+        <a href={url} target="_blank">
+          <Image src={name} alt="icon" width={20} />
+        </a>
+      ))
+    }
+  </section>
 </aside>

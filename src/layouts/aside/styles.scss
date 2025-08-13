@@ -14,6 +14,7 @@
       border-radius: 50%;
       position: relative;
       top: 28px;
+      object-fit: cover;
     }
   }
 
@@ -42,7 +43,25 @@
         &:hover {
           background-color: #a6adbb15;
         }
+
+        a.active{
+          background-color: var(--active-color);
+          border-radius: 8px;
+          font-weight: bold;
+          transition: 0.5s ease-in-out;
+        }
       }
+    }
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+
+    a {
+      padding-bottom: 20px;
     }
   }
 

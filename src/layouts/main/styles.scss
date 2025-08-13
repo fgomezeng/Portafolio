@@ -1,0 +1,5 @@
+.main {
+  grid-column-start: span 4;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
