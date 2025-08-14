@@ -1,0 +1,8 @@
+.section {
+  background-color: var(--secondary-color);
+  overflow: auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

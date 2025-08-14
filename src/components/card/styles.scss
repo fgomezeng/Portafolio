@@ -46,3 +46,9 @@
     }
   }
 }
+
+@media(max-width: 640px){
+  .content-card{
+    flex-direction: column;
+  }
+}
