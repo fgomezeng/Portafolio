@@ -3,15 +3,35 @@
 import "../_styles.scss";
 import "./_styles.scss";
 
+//Assets
+import imagenSrc1 from "../../assets/images/presupuesto.png";
+
 //Components
 import Card from "../../components/card/Card.astro";
+
+const data = [
+  {
+    title: "Budget App",
+    description:
+      "Es una aplicación básica construida con HTML5, CSS3 y JavaScript, que simula llevar un registro de los ingresos y egresos para tener un mejor control del dinero.",
+    imageUrl: imagenSrc1,
+    url: "https://tiny-parfait-eca0fe.netlify.app/",
+  }
+];
 ---
 
 <main class="section">
   <div class="container-title">
     <h1>My Projects</h1>
   </div>
-  <Card />
-  <Card />
-  <Card />
+  {
+    data.map(({ title, description, imageUrl, url }) => (
+      <Card
+        title={title}
+        description={description}
+        imageUrl={imageUrl}
+        url={url}
+      />
+    ))
+  }
 </main>
