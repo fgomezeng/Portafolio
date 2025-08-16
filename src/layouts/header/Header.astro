@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 //Styles
 import "./styles.scss";
@@ -7,11 +8,47 @@ import "./styles.scss";
 //Assets
 //Icons
 import iconHamburguer from "../../assets/icons/hamburguer.svg";
+import iconSpain from "../../assets/icons/spain.svg";
+import iconUsa from "../../assets/icons/usa.svg";
+
+const currentLanguage = Astro.currentLocale || "es";
+const currentPath = new URL(Astro.request.url).pathname;
+
+// Función para eliminar el prefijo de idioma de la ruta
+const cleanPath = (path: any) =>
+  path.replace(new RegExp(`^/${currentLanguage}`), "") || "/";
+const cleanCurrentPath = cleanPath(currentPath);
+
+interface LanguageInfo {
+  icon: ImageMetadata;
+  label: string;
+}
+
+const languages: Record<string, LanguageInfo> = {
+  en: { label: "English", icon: iconUsa },
+  es: { label: "Español", icon: iconSpain },
+};
 ---
 
 <header class="header">
-  <Image id="menu" src={iconHamburguer} alt="Hamburguer" width={15} />
-  <a href="/">Fernando Gómez ✨</a>
-  <p>language</p>
+  <Image id="menu" class="hamburguer" src={iconHamburguer} alt="Hamburguer" width={15} />
+  <a class="name" href="/">Fernando Gómez ✨</a>
+
+  <div class="language-icons">
+    <a
+      href={getRelativeLocaleUrl("es", cleanCurrentPath)}
+      class={currentLanguage === "es" ? "active" : ""}
+      title="Español"
+    >
+      <Image src={iconSpain} alt="Español" width={20} />
+    </a>
+    <a
+      href={getRelativeLocaleUrl("en", cleanCurrentPath)}
+      class={currentLanguage === "en" ? "active" : ""}
+      title="English"
+    >
+      <Image src={iconUsa} alt="English" width={20}/>
+    </a>
+  </div>
 </header>
 <script src="./utils/toggle-menu.util.ts"></script>

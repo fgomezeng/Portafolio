@@ -7,7 +7,7 @@
   border-bottom: 1px solid #4b4b4b18;
   min-height: 64px;
 
-  img {
+  .hamburguer {
     display: none;
     padding: 12px;
     cursor: pointer;
@@ -18,7 +18,7 @@
     }
   }
 
-  a {
+  .name {
     font-family: var(--primary-font);
     opacity: 0.75;
     display: none;
@@ -32,8 +32,23 @@
     }
   }
 
-  p {
-    color: var(--text-color);
-    font-family: var(--primary-font);
+  .language-icons {
+    display: flex;
+    gap: 12px;
+
+    a {
+      padding: 4px;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+      display: block;
+
+      &:hover {
+        background: var(--hover-color);
+      }
+
+      &.active {
+        background: var(--active-color);
+      }
+    }
   }
 }
