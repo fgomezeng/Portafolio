@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
+import type { languageList } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 //Styles
 import "./styles.scss";
@@ -29,13 +32,16 @@ const ICONS = [
   }
 ];
 
+const currentLanguage = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLanguage as keyof typeof languageList);
+
 const ROUTES = [
   {
-    title: "Home",
+    title: translateLabels('aside.home'),
     path: "/",
   },
   {
-    title: "Projects",
+    title: translateLabels('aside.projects'),
     path: "/projects",
   },
   {
@@ -43,18 +49,25 @@ const ROUTES = [
     path: "/cv",
   },
   {
-    title: "Contact",
+    title: translateLabels('aside.contact'),
     path: "mailto:fernando.gomez@utp.edu.co",
   },
 ];
 
 //Valida la ruta para saber cuál está activa 
 const currentPath = new URL(Astro.request.url).pathname;
+const cleanPath = (path: string) => {
+  return path.replace(new RegExp(`^/${currentLanguage}`), '') || '/';
+};
+
 const isActive = (path: string) => {
-  if(path === "/"){
-    return currentPath === "/";
+  const cleanCurrentPath = cleanPath(currentPath);
+  const cleanComparePath = cleanPath(path);
+
+  if(cleanComparePath === "/"){
+    return cleanCurrentPath === "/";
   }
-  return currentPath === path || currentPath.startsWith(path + "/");
+  return cleanCurrentPath === cleanComparePath || cleanCurrentPath.startsWith(cleanComparePath + "/");
 };
 ---
 
@@ -67,7 +80,7 @@ const isActive = (path: string) => {
       {
         ROUTES.map(({ path, title }) => (
           <li>
-            <a href={path} class={isActive(path) ? 'active' : ''}>{title}</a>
+            <a href={getRelativeLocaleUrl(currentLanguage, path)} class={isActive(path) ? 'active' : ''}>{title}</a>
           </li>
           <ClientRouter/>
         ))

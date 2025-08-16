@@ -1,0 +1,38 @@
+.presentation{
+    font-family: var(--primary-font);
+    opacity: .75;
+    max-width: 1024px;
+    .greeting{
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+    h1{
+        font-size: 3rem;
+        margin: 0;
+    }
+    h3{
+        font-size: 2rem;
+        margin: 0;
+    }
+    p{
+        line-height: 1.8rem;
+        text-align: justify;
+    }
+}
+
+.connect{
+    font-family: var(--primary-font);
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    .btn{
+        padding: 1rem;
+        background-color: var(--active-color);
+        text-decoration: none;
+        color: var(--text-color);
+        border-radius: .5rem;
+        &:hover{
+            background-color: var(--hover-color);
+        }
+    }
+}
